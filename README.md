@@ -30,3 +30,10 @@ Test
 
 　・MarketPlace
 　　https://github.com/marketplace?type=actions
+
+
+ ・RunnerをServiceとして設定する
+ 　https://docs.github.com/ja/actions/hosting-your-own-runners/managing-self-hosted-runners/configuring-the-self-hosted-runner-application-as-a-service?platform=windows
+　　　Start-Service "actions.runner.*"
+ 　　Stop-Service "actions.runner.*"
+ 　　Get-Service "actions.runner.*"
