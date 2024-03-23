@@ -37,3 +37,6 @@ Test
 　　　Start-Service "actions.runner.*"
  　　Stop-Service "actions.runner.*"
  　　Get-Service "actions.runner.*"
+
+  ・コマンドラインからMATLAB起動
+  　https://jp.mathworks.com/help/matlab/ref/matlabwindows.html
