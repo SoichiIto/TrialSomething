@@ -2,7 +2,7 @@ function actx_excel2
     %https://jp.mathworks.com/help/matlab/matlab_external/example-reading-excel-spreadsheet-data_ja_JP.html
     % Copyright 2013 The MathWorks, Inc.
     % Use Excel as a data server for MATLAB
-
+   disp("Hello World");
     % Start data server
     [exl,  exlWkbk ,exlData] = startServ1();
     % Scope variables from startServ1 to main function
@@ -28,6 +28,7 @@ function actx_excel2
       exl.Quit
    end
 
+   disp("End Matlab");
     %% Start data server
     function [exl ,exlWkbk ,exlData]  = startServ1()
        exl = actxserver('excel.application');
