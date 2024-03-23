@@ -6,7 +6,7 @@ jobs:
     strategy:
       max-parallel: 3
       matrix:
-        scripts: [./Test1.ps1,./Test2.ps1]
+        scripts: [./MatlabExe.ps1]
 #    runs-on: windows-latest
     runs-on: self-hosted
     steps:
