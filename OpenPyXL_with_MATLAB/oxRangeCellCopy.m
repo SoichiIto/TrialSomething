@@ -71,15 +71,24 @@ function oxRangeCellCopy(sheet,min_row,min_col,max_row,max_col,dest_row,dest_col
              
              % コピー先がマージセルでなければ値をコピー。
              if ~isa(sheet.cell(row{1},col{1}),'py.openpyxl.cell.cell.MergedCell')
-                sheet.cell(row{1} + shift_row,col{1} + shift_col).value = ...
-                    sheet.cell(row{1},col{1}).value;
+                val_obj = py.copy.copy(sheet.cell(row{1},col{1}).value);
+                if ~isa(val_obj,'py.NoneType')
+                   sheet.cell(row{1} + shift_row,col{1} + shift_col).value = val_obj;
+                end
+                
+                style_obj = py.copy.copy(sheet.cell(row{1},col{1}).hyperlink);
+                if ~isa(style_obj,'py.NoneType')
+ %                  sheet.cell(row{1} + shift_row,col{1} + shift_col).hyperlink = style_obj.target;
 
-                sheet.cell(row{1} + shift_row,col{1} + shift_col).hyperlink = ...
-                    sheet.cell(row{1},col{1}).hyperlink;
-                 
-                sheet.cell(row{1} + shift_row,col{1} + shift_col).comment = ...
-                    sheet.cell(row{1},col{1}).comment;
-
+                    strLink = strcat('=HYPERLINK("'  ,string(style_obj.target),'","',string(sheet.cell(row{1},col{1}).value),'")');
+                    sheet.cell(row{1} + shift_row,col{1} + shift_col).value = strLink;
+                end
+                
+%                 style_obj = py.copy.copy(sheet.cell(row{1},col{1}).comment);
+%                 if ~isa(style_obj,'py.NoneType')
+%                    sheet.cell(row{1} + shift_row,col{1} + shift_col).comment = style_obj;
+%                 end
+                
                 sheet.cell(row{1} + shift_row,col{1} + shift_col).number_format = ...
                     sheet.cell(row{1},col{1}).number_format;
 
